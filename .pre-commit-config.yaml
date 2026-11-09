@@ -1,0 +1,30 @@
+# Hooks that run automatically on every `git commit`.
+# Run on all files manually:  uv run pre-commit run --all-files
+repos:
+  # --- Generic file hygiene + secret detection (maintained by the pre-commit team) ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace        # strip invisible spaces at line ends
+      - id: end-of-file-fixer          # every file ends with exactly one newline
+      - id: check-yaml                 # YAML parses (Airflow/CI configs later)
+      - id: check-toml                 # pyproject.toml parses
+      - id: check-added-large-files    # block accidentally committing data files
+        args: ["--maxkb=500"]
+      - id: detect-private-key         # block committing SSH/TLS private keys
+      - id: detect-aws-credentials     # block committing AWS access keys
+        args: ["--allow-missing-credentials"]
+
+  # --- Ruff, run through uv so it uses the EXACT version pinned in uv.lock ---
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check (lint + fix)
+        entry: uv run ruff check --fix
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
