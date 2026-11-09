@@ -1,0 +1,56 @@
+# ============================================================
+# .gitignore — files Git must NEVER track
+# Rule: commit code + config. Never commit data, secrets,
+# or anything a tool can regenerate.
+# NOTE: comments must be on their OWN line in .gitignore.
+# ============================================================
+
+# --- Python: regenerated automatically ---
+# .venv = the project's private Python + libraries (uv rebuilds it)
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# --- Data: lives in the lake (local folder / S3), never in Git ---
+# Git keeps every version of every file forever; GBs of CSV/Parquet
+# would bloat the repo permanently.
+data/
+*.csv
+*.parquet
+*.zip
+
+# --- Secrets: a leaked AWS key gets abused within minutes ---
+.env
+.env.*
+# '!' = exception: the empty TEMPLATE is safe to commit
+!.env.example
+*.pem
+*.key
+.aws/
+
+# --- Terraform ---
+# provider plugins (large, regenerable)
+.terraform/
+# state can contain secrets; it will live in S3 from M7
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!example.tfvars
+
+# --- Airflow (M9) ---
+logs/
+airflow.db
+
+# --- OS / editor clutter ---
+# macOS writes .DS_Store into every folder opened in Finder
+.DS_Store
+.vscode/
+.idea/
