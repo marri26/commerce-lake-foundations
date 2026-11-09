@@ -1,0 +1,23 @@
+[project]
+name = "commerce-lake"
+version = "0.1.0"
+description = "Nightly batch data lake: one trusted daily revenue, margin and inventory number"
+readme = "README.md"
+authors = [
+    { name = "Manoj Kumar Marri", email = "manojkumar.marri26@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+commerce-lake = "commerce_lake:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+]
