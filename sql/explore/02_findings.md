@@ -1,0 +1,2 @@
+- 8 record with delivered status has null delivered dates
+- grain of the tables have issues with reviews, payments etc
