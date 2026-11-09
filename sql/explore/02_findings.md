@@ -1,2 +1,4 @@
 - 8 record with delivered status has null delivered dates
-- grain of the tables have issues with reviews, payments etc
+- reviews table have mutli join and is not unique for one order
+- thee payments have issue with fan out , the payments are mutiple for order so careless join dont work
+-
