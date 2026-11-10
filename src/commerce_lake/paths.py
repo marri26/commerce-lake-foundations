@@ -25,6 +25,6 @@ def partition_path(
         'data/lake/raw/olist/orders/ingest_date=2026-11-09'
     """
     if layer not in LAYERS:
-        raise ValueError(f"Unkown layer '{layer!r}'; expected one of {LAYERS}")
+        raise ValueError(f"Unknown layer {layer!r}; expected one of {LAYERS}")
     root = root.rstrip("/")
     return f"{root}/{layer}/{source}/{table}/ingest_date={ingest_date.isoformat()}"

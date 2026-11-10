@@ -26,5 +26,5 @@ def test_trailing_slash_on_root_is_ignored():
 
 
 def test_unknown_layer_is_rejected():
-    with pytest.raises(ValueError, match="Unkown layer"):
+    with pytest.raises(ValueError, match="Unknown layer"):
         partition_path("data/lake", "silver", "olist", "orders", DAY)
