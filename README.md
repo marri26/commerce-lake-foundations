@@ -23,8 +23,8 @@ sources ──► extractors ──► S3 /raw ──► /bronze (Parquet) ─�
 |---|---|---|
 | v0.0.1 | M0 — Repo initialised | ✅ |
 | v0.1.0 | M0 — Project skeleton (uv, ruff, pytest, Makefile) | ✅ |
-| v0.2.0 | M1 — Explore the data, define "daily revenue" | ⏳ |
-| v0.3.0 | M2 — First extractor → raw layer | |
+| v0.2.0 | M1 — Explore the data, define "daily revenue" | ✅ |
+| v0.3.0 | M2 — First extractor → raw layer | ⏳ |
 | v0.4.0 | M3 — Bronze Parquet + format benchmark | |
 | v0.5.0 | M4 — Curated layer + first revenue number | |
 | v0.6.0 | M5 — API extractors + watermark incremental | |
